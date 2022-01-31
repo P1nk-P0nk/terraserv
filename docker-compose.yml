@@ -4,11 +4,13 @@ services:
   terraria:
     image: ryshe/terraria:tshock-latest
     ports:
-      - "7777:7777"
+      - "7777:7777/tcp"
+      - "7777:7777/udp"
     volumes:
       - "./terraria/world:/root/.local/share/Terraria/Worlds"
     environment:
       - "WORLD_FILENAME=<world_filename>.wld"
+    restart: "unless-stopped"
     tty: true
     stdin_open: true
 
